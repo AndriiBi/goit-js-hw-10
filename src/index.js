@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const loader = document.querySelector(".loader");
     const error = document.querySelector(".error");
 
+    loader.style.display = "none";
+    error.style.display = "none";
+
     fetchBreeds()
         .then(breeds => {
             fillBreedsSelect(breeds);
