@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const loader = document.querySelector(".loader");
     const error = document.querySelector(".error");
 
-    // Load breeds on page load
     fetchBreeds()
         .then(breeds => {
             fillBreedsSelect(breeds);
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
             showError(err);
         });
 
-    // Handle breed selection
     breedSelect.addEventListener('change', () => {
         const selectedBreedId = breedSelect.value;
         if (selectedBreedId) {
@@ -34,18 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Display cat information
     function displayCatInfo(catData) {
         catInfoDiv.innerHTML = `
-            <img src="${catData.url}" alt="Cat Image">
-            <p>Breed: ${catData.breeds[0].name}</p>
-            <p>Description: ${catData.breeds[0].description}</p>
-            <p>Temperament: ${catData.breeds[0].temperament}</p>
+            <img src="${catData.url}" alt="Cat Image" style="max-width: 500px; border-radius: 10px; margin-bottom: 10px;">
+            <p style="font-size: 18px; margin-bottom: 8px;">Breed: ${catData.breeds[0].name}</p>
+            <p style="font-size: 16px; margin-bottom: 8px;">Description: ${catData.breeds[0].description}</p>
+            <p style="font-size: 16px;">Temperament: ${catData.breeds[0].temperament}</p>
         `;
         catInfoDiv.style.display = "block";
     }
-
-    // Show/hide loader
     function showLoader() {
         loader.style.display = "block";
     }
@@ -54,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
         loader.style.display = "none";
     }
 
-    // Show/hide error
     function showError(err) {
         error.style.display = "block";
         console.error(err);
@@ -64,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         error.style.display = "none";
     }
 
-    // Helper function to fill the breeds select
     function fillBreedsSelect(breeds) {
         breeds.forEach(breed => {
             const option = document.createElement("option");
