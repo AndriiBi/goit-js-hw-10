@@ -1,4 +1,6 @@
 import { fetchBreeds, fetchCatByBreed } from "./cat-api";
+import Notiflix from "notiflix";
+import SlimSelect from 'slim-select';
 
 document.addEventListener("DOMContentLoaded", () => {
     const breedSelect = document.querySelector(".breed-select");
@@ -50,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showError(err) {
-        error.style.display = "block";
+        Notiflix.Notify.Failure('Oops! Something went wrong. Try again later.');
         console.error(err);
     }
 
